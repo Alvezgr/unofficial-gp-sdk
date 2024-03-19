@@ -4,7 +4,9 @@ This sdk provides basic methos to integrate geopagos apps (Getnet, Viumi, OpenPa
 
 ## Requirements
 
-Python 3 or higher.
+python3
+requests
+
 
 ## Installation 
 
@@ -13,14 +15,14 @@ Run ```git clone git@github.com:Alvezgr/unofficial-gp-sdk.git```
 ## Getting Started
 Before you begin, you must request the API credential from your supplier (Getnet, Viumi, OpenPay, Taca Taca, Toque, Sipago, Uala Bis)
 
-Request the your `Access Token` to the [geopagos auth](https://auth.geopagos.com/oauth/token)
+Request the your `Access Token` to the [geopagos auth](https://auth.geopagos.com/oauth/token) and API url
 
 ### Simple usage
   
 ```python
 import gp
 
-sdk = gp.SDK("ACCESS_TOKEN")
+sdk = gp.SDK("ACCESS_TOKEN", "https://api.url.com")
 
 order_data = {
   "data": {
@@ -70,6 +72,16 @@ Visit apps site for docs:
  - [Viumi](https://developers.viumi.com.ar/)
 
 Check our official code reference to explore all available functionalities.
+
+## Tests
+```bash
+export ACCESS_TOKEN=access_token
+export INVALID_ACCESS_TOKEN=invalid_token
+export ORDER_ID=and_order_uuid
+export API_URL=your_provider_url
+
+```
+Ensure to define 
 
 ## Contributing
 
