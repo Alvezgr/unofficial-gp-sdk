@@ -38,7 +38,7 @@ class Client:
         """
         current_session: Session = Session()
         with current_session as session:
-            api_response: Response  = session.request(
+            api_response: Response = session.request(
                 method, url, headers=headers, data=data, params=params
             )
 
