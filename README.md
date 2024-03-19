@@ -74,6 +74,7 @@ Visit apps site for docs:
 Check our official code reference to explore all available functionalities.
 
 ## Tests
+Ensure to define 
 ```bash
 export ACCESS_TOKEN=access_token
 export INVALID_ACCESS_TOKEN=invalid_token
@@ -81,7 +82,9 @@ export ORDER_ID=and_order_uuid
 export API_URL=your_provider_url
 
 ```
-Ensure to define 
+```bash
+pytest tests/
+```
 
 ## Contributing
 
