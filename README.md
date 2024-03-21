@@ -20,47 +20,41 @@ Request the your `Access Token` to the [geopagos auth](https://auth.geopagos.com
 ### Simple usage
   
 ```python
-import gp
+import geopagos
 
-sdk = gp.SDK("ACCESS_TOKEN", "https://api.url.com")
+sdk = geopagos.SDK("ACCESS_TOKEN", "https://api.url.com")
 
-order_data = {
-  "data": {
-    "attributes": {
-      "redirect_urls": {
-        "success": "https://www.mitienda.com/success",
-        "failed": "https://www.mitienda.com/failed"
-      },
-      "shipping": {
-        "name": "Correo Argentino",
-        "price": {
-          "currency": "032",
-          "amount": 450
-        }
-      },
-      "items": [
-        {
-          "name": "Lomo con papas",
-          "unitPrice": {
-            "currency": "032",
-            "amount": 10050
-          },
-          "quantity": 2
-        },
-        {
-          "unitPrice": {
-            "currency": "032",
-            "amount": 1
-          },
-          "quantity": 1
-        }
-      ],
-      "externalData": "{\"NroLegajo\": 25993}"
-    }
-  }
+urls = {
+    "success": "https://www.mitienda.com/success",
+    "failed": "https://www.mitienda.com/failed"
 }
 
-result = sdk.order().create(order_data)
+shipping =  {
+    "name": "Correo Argentino",
+    "price": {
+        "currency": "032",
+        "amount": 450
+  }
+}
+items =  [
+  {
+      "name": "Lomo con papas",
+      "unitPrice": {
+          "currency": "032",
+          "amount": 10050
+      },
+      "quantity": 2
+  },
+]
+
+external_data = "25993"
+
+result = sdk.order().create(
+      items,
+      urls=urls,
+      shipping=shipping,
+      external_data=external_data
+)
 payment = result["response"]
 
 print(payment)
