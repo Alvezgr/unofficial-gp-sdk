@@ -46,13 +46,17 @@ class Payment:
 
         Parameters:
         - order_id (str): The ID of the order for which the payment is being created.
-        - payment_data (Dict): A dictionary containing payment data to be created
-            you shuld never use this method in a web application, we are dealing with
-            card sesitive data and shuld never reach your server, use the checkout
-            url returned in the order object, this is used by GUI and dev expiremental unique.
+        - payment_data (Dict): A dictionary containing payment data to be created.
+            You should never use this method in a web application, we are dealing with
+            card sesitive data and should never reach your server, use the checkout
+            url returned in the order object instead, this is used by GUI programs 
+            and it is for dev expiremental only.
 
         Returns:
         - Dict: A dictionary containing the response from the payment creation request.
+            For documentation, please checkout : 
+                - [Getnet](https://developers-sdk-documentation-site-santander.preprod.geopagos.com/)
+                - [Viumi](https://developers.viumi.com.ar/)
         """
 
         if payment_data is not None:
