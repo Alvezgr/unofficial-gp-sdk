@@ -4,7 +4,7 @@
 from json.encoder import JSONEncoder
 
 # Typing imports
-from typing import Dict, Any
+from typing import Dict, List, Any
 
 # Local imports
 from gp.client import Client
@@ -43,24 +43,38 @@ class Order:
         }
         return self.client.get(f"{self.url}/api/v2/orders/{order_id}", headers=headers)
 
-    def create(self, items: Dict[str, any]) -> Dict[str, Any]:
+    def create(
+        self,
+        items: List[Dict[str, any]],
+        urls: Dict[str, str] = None,
+        shipment: Dict[str, Any] = None,
+        external_data: Dict[str, str] = None) -> Dict[str, Any]:
         """Create a new order.
 
         Arg:
-            items (Dict[str, any]): Items of a order
+            items (List[Dict[str, any]]): Items of a order.
+            urls (Dict[str, str]): URLs, to redirect to if success or fails.
+            shipment (Dict[str, Any]): Shipment, if contains a shippment information.
+            external_data (Dict[str, str]): External data, normally you want to atach a sale_id to it.
 
         Returns:
             Dict[str, Any]: Order
         """
+
         headers: Dict[str, str] = {
             "Content-Type": "application/vnd.api+json",
             "Authorization": f"Bearer {self.access_token}"
         }
-        if items is not None:
-            order_data = {
-                "data": {
-                    "attributes": { "items": items }
+        
+        order_data = {
+            "data": {
+                "attributes": {
+                    "items": items ,
+                    "shipping": shipment,
+                    "redirect_urls": urls,
+                    "externalData": external_data
                 }
             }
-            order_data = JSONEncoder().encode(order_data)
+        }
+        order_data = JSONEncoder().encode(order_data)
         return self.client.post(f"{self.url}/api/v2/orders", data=order_data, headers=headers)
