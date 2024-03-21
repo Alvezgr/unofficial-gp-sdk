@@ -1,0 +1,22 @@
+[build-system]
+requires = ["setuptools>=61.0"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "geopagos-python-sdk"
+version = "0.0.1"
+authors = [
+  { name="Alvez Gerardo", email="alvezpope@gmail.com" },
+]
+description = "Unoffial geopagos sdk to work with apps like (Viumi, Getnet, OpenPay, Taca Taca, Toque, Sipago...)."
+readme = "README.md"
+requires-python = ">=3.8"
+classifiers = [
+    "Programming Language :: Python :: 3",
+    "License :: OSI Approved :: MIT License",
+    "Operating System :: OS Independent",
+]
+
+[project.urls]
+Homepage = "https://github.com/alvezgr/unofficial-gp-sdk/"
+Issues = "https://github.com/Alvezgr/unofficial-gp-sdk/issues"
