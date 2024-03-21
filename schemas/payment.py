@@ -32,9 +32,9 @@ class Payment:
         - client (Client): An instance of the Client class for making HTTP requests.
         - header (Dict[str, str]): HTTP headers including Content-Type and Authorization.
         """
-        self.url = url
-        self.access_token = access_token
-        self.client = client
+        self.url: str = url
+        self.access_token: str = access_token
+        self.client: Client = client
         self.header: Dict[str, str] = {
             "Content-Type": "application/vnd.api+json",
             "Authorization": f"Bearer {access_token}",
@@ -75,13 +75,13 @@ class Payment:
             refund_data = JSONEncoder().encode(refund_data)
         return self.client.post(f"{self.url}/api/v2/refunds", header=self.header)
 
-    def get_installments(self, merchant_data: Dict) -> Dict:
+    def installments(self, merchant_data: Dict) -> Dict:
         """
         Request the posible isntallments
 
         Paramenters:
         - merchant_data (Dict) A dictionary containing installment request data
-        the merchant data should be as:
+        the merchant data should look like:
             mercant_data = {
                 "bin": card_bin_number,
                 "total": total_amount,
@@ -94,7 +94,7 @@ class Payment:
         - Dict: A dictionary containing the response from the refund request.
         """
         if merchant_data is not None:
-            merchant_data = MultipartEncoder(fields=merchant_data)
-            self.header: Dict[str, str] = {"Content-Type": merchant_data.content_type}
+            merchant_data_encoded: MultipartEncoder = MultipartEncoder(fields=merchant_data)
+            self.header: Dict[str, str] = {"Content-Type": merchant_data_encoded.content_type}
 
-        return self.client.post(f"{self.url}/api/checkout/getInstallments.json", headers=self.header, data=merchant_data)
+        return self.client.post(f"{self.url}/api/checkout/getInstallments.json", headers=self.header, data=merchant_data_encoded)
