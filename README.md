@@ -68,7 +68,7 @@ print(payment)
 ## Documentation 
 
 Visit apps site for docs:
- - [Getnet](https://www.mercadopago.com/developers/en/reference)
+ - [Getnet](https://developers-sdk-documentation-site-santander.preprod.geopagos.com/)
  - [Viumi](https://developers.viumi.com.ar/)
 
 Check our official code reference to explore all available functionalities.
