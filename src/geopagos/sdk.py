@@ -1,8 +1,8 @@
 """SDK module."""
 
 # App main imports
-from gp.client import Client
-from gp.schemas import Order, Payment
+from geopagos.client import Client
+from geopagos.schemas import Order, Payment
 
 
 class SDK:

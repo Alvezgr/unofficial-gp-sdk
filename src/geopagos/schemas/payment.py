@@ -8,7 +8,7 @@ from json.encoder import JSONEncoder
 from requests_toolbelt.multipart.encoder import MultipartEncoder
 
 # App main imports
-from gp.client import Client
+from geopagos.client import Client
 
 
 class Payment:

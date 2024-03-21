@@ -7,7 +7,7 @@ from json.encoder import JSONEncoder
 from typing import Dict, List, Any
 
 # Local imports
-from gp.client import Client
+from geopagos.client import Client
 
 
 class Order:
