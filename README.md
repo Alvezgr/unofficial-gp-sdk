@@ -3,9 +3,10 @@
 This sdk provides basic methos to integrate geopagos apps (Getnet, Viumi, OpenPay, Taca Taca, Toque, Sipago, Uala Bis) payment API for a platform to start receiving payments.
 
 ## Requirements
-
-python3
+```txt
+python3.x
 requests
+```
 
 
 ## Installation 
